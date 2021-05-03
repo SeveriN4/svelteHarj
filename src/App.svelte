@@ -10,6 +10,10 @@
   let nimi = '';
   let arpoja = 'Severi';
 
+  //validointia
+  const onkoValidiNimi = (x) => x.length > 0;
+  $: validiNimi = onkoValidiNimi(nimi);
+
   //lottokoneen toimintaan liittyviä muuttujia
   let rivienLkm = 0;
   let maxNro = 40;
@@ -87,7 +91,7 @@
   </div>
 
   <!-- rivinimi komponentti johon tehty pari propsien sidontaa-->
-  <Rivinimi bind:onkoArvottu={arvo} bind:name={nimi} />
+  <Rivinimi bind:onkoArvottu={arvo} bind:name={nimi} isValid={validiNimi} />
 </main>
 
 <style>
