@@ -1,7 +1,10 @@
 <script>
   import { fly, fade } from 'svelte/transition';
   import Info from './Info.svelte';
+  import Rivinimi from './Rivinimi.svelte';
 
+  let arvo = false;
+  let nimi = '';
   let arpoja = 'Severi';
 
   let rivienLkm = 0;
@@ -17,6 +20,8 @@
     rivienLkm = 0;
     arvotut = [];
     document.getElementById('hide').style.display = '';
+    arvo = false;
+    nimi = '';
   }
 
   function lottoKone() {
@@ -41,8 +46,9 @@
         }
       }
       rivienLkm = 0;
+      document.getElementById('hide').style.display = 'none';
+      arvo = true;
     }
-    document.getElementById('hide').style.display = 'none';
   }
 </script>
 
@@ -57,6 +63,7 @@
 
   <button on:click={lottoKone}>Aloita arvonta</button>
 
+  <h2 id="nametag">{nimi}</h2>
   <div id="boxi">
     {#each arvotut as arvottu}
       <p in:fly={{ duration: 1500, x: 300, y: 300 }} out:fade id="arvottuja">
@@ -65,11 +72,7 @@
     {/each}
   </div>
 
-  {#if rivienLkm === 0}
-    <p>Pistetäänkö riviä tulemaan?</p>
-  {:else}
-    <p>Klikkaa vielä "Aloita arvonta!"</p>
-  {/if}
+  <Rivinimi bind:onkoArvottu={arvo} bind:name={nimi} />
 </main>
 
 <style>
@@ -99,5 +102,10 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  #nametag {
+    font-style: italic;
+    color: #ff3e00;
   }
 </style>
