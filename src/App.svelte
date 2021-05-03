@@ -33,7 +33,7 @@
 
   //itse lottokone
   function lottoKone() {
-    if (rivienLkm > 1) {
+    if (rivienLkm > 1 || rivienLkm === 0) {
       alert(
         'Tämän ohjelman magia riittää vain yhteen riviin, ole hyvä ja koita uudestaan!'
       );
