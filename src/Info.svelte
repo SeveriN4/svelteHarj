@@ -1,4 +1,5 @@
 <script>
+  // täällä ei kummempia, tekija välitetään propsina ja h1 stylet
   export let tekija;
 </script>
 

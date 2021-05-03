@@ -1,9 +1,11 @@
 <script>
+  //täältäkin välitetään ensin pari propsia
   export let onkoArvottu;
   export let name;
 </script>
 
 <section>
+  <!-- ja täällä if-lohko joka mahdolistaa rivin nimeämisen jos se on arvottu-->
   {#if onkoArvottu === true}
     <p>Anna maagiselle riville nimi:</p>
     <input type="text" bind:value={name} />
